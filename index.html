@@ -1,0 +1,38 @@
+<html>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const calc = (event) => {
+                const mindmg = Number(document.querySelector("#min-dmg").value)
+                const maxdmg = Number(document.querySelector("#max-dmg").value)
+                const attack = Number(document.querySelector("#attack").value)
+                const ambush = Number(document.querySelector("#ambush").value) / 100
+                const bonus = Number(document.querySelector("#bonus").value)
+                const mod = (attack / 14 * 1.7)
+                const minfinal = Math.round((mindmg + mod) * ambush + bonus)
+                const maxfinal = Math.round((maxdmg + mod) * ambush + bonus)
+                document.querySelector("#output").textContent = `Your ambush damage is ${minfinal} to ${maxfinal}`
+            }
+            document.querySelector("#min-dmg").addEventListener("input", calc)
+            document.querySelector("#max-dmg").addEventListener("input", calc)
+            document.querySelector("#attack").addEventListener("input", calc)
+            document.querySelector("#ambush").addEventListener("input", calc)
+            document.querySelector("#bonus").addEventListener("input", calc)
+        })
+    </script>
+    <label for="min-dmg">Input your minimum damage:</label>
+    <input id="min-dmg" type="number">
+    <br></br>
+    <label for="max-dmg">Input your maximum damage:</label>
+    <input id="max-dmg" type="number">
+    <br></br>
+    <label for="attack">Input your attack power:</label>
+    <input id="attack" type="number">
+    <br></br>
+    <label for="ambush">Input your ambush modifier:</label>
+    <input id="ambush" type="number">
+    <br></br>
+    <label for="bonus">Input your bonus damage:</label>
+    <input id="bonus" type="number">
+    <br></br>
+    <h id="output"></h>
+</html>
