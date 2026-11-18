@@ -2,6 +2,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const calc = (event) => {
+                localStorage.setitem(event.target.id, Number(event.target.value))
                 const mindmg = Number(document.querySelector("#min-dmg").value)
                 const maxdmg = Number(document.querySelector("#max-dmg").value)
                 const attack = Number(document.querySelector("#attack").value)
@@ -12,11 +13,21 @@
                 const maxfinal = Math.round((maxdmg + mod) * ambush + bonus)
                 document.querySelector("#output").textContent = `Your ambush damage is ${minfinal} to ${maxfinal}`
             }
-            document.querySelector("#min-dmg").addEventListener("input", calc)
-            document.querySelector("#max-dmg").addEventListener("input", calc)
-            document.querySelector("#attack").addEventListener("input", calc)
-            document.querySelector("#ambush").addEventListener("input", calc)
-            document.querySelector("#bonus").addEventListener("input", calc)
+            const mindmginput = document.querySelector("#min-dmg")
+            mindmginput.value = localStorage.getItem("min-dmg")
+            mindmginput.addEventListener("input", calc)            
+            const maxdmginput = document.querySelector("#max-dmg")
+            maxdmginput.value = localStorage.getItem("max-dmg")
+            maxdmginput.addEventListener("input", calc)
+            const attackinput = document.querySelector("#attack")
+            attackinput.value = localStorage.getItem("attack")
+            attackinput.addEventListener("input", calc)
+            const ambushinput = document.querySelector("#ambush")
+            ambushinput.value = localStorage.getItem("ambush")
+            ambushinput.addEventListener("input", calc)
+            const bonusinput = document.querySelector("#bonus")
+            bonusinput.value = localStorage.getItem("bonus")
+            bonusinput.addEventListener("input", calc)
         })
     </script>
     <label for="min-dmg">Input your minimum damage:</label>
