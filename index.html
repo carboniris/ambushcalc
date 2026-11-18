@@ -2,7 +2,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const calc = (event) => {
-                localStorage.setitem(event.target.id, Number(event.target.value))
+                localStorage.setItem(event.target.id, Number(event.target.value))
                 const mindmg = Number(document.querySelector("#min-dmg").value)
                 const maxdmg = Number(document.querySelector("#max-dmg").value)
                 const attack = Number(document.querySelector("#attack").value)
